@@ -13,9 +13,14 @@ public class NegateOperator extends UnaryOperator<Integer> {
      */
     @Override
     public Operand<Integer> performOperation() {
+        Operand<Integer> op0 = this.getOp0();
+
+        Integer result = !(op0.getValue());
+        return new Operand<>(result);
+    }
         // TODO: Follow the example from PlusOperator to override
         //   this method (from the version in UnaryOperator)
         //   for negation.
-        return null;
+
     }
-}
+
