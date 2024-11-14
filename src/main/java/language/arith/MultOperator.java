@@ -22,9 +22,7 @@ public class MultOperator extends BinaryOperator<Integer> {
         Integer result = op0.getValue() * op1.getValue();
         return new Operand<>(result);
     }
-        // TODO: Follow the example from PlusOperator to override
-        //   this method (from the version in BinaryOperator)
-        //   for multiplication.
+
 
     }
 
