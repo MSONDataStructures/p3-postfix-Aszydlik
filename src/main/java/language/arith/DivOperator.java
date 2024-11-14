@@ -33,9 +33,18 @@ public class DivOperator extends BinaryOperator<Integer> {
      */
     @Override
     public void setOperand(int i, Operand<Integer> operand) {
-        // TODO: For division we need to additionally override
-        //  the setOperand method to check for division by zero.
-        //  See DivOperatorTest (and the README) for usage.
+        Operand<Integer> op0 = this.getOp0();
+        Operand<Integer> op1 = this.getOp1();
+       if(operand == null) throw new NullPointerException("Operand cannot be null.");
+       if(i != 0 && i !=1) throw new IllegalArgumentException("Operand must be 0 or 1.");
+       if(i == 0 ){
+           if(op0.getValue() != null ) throw new IllegalArgumentException("Operand cannot be null.");
+           op0 = operand;
+       }
+       if(i == 1 ){
+           if(i == 1 && operand.getValue() == 0) throw new IllegalArgumentException("Operand cannot be zero.");
+           op1 = operand;
+       }
     }
 
 }
