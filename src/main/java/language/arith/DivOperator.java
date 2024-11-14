@@ -14,11 +14,19 @@ public class DivOperator extends BinaryOperator<Integer> {
      */
     @Override
     public Operand<Integer> performOperation() {
+        Operand<Integer> op0 = this.getOp0();
+        Operand<Integer> op1 = this.getOp1();
+        if (op0 == null || op1 == null) {
+            throw new IllegalStateException("Could not perform operation prior to operands being set.");
+        }
+        Integer result = op0.getValue() / op1.getValue();
+        return new Operand<>(result);
+    }
         // TODO: Follow the example from PlusOperator to override
         //   this method (from the version in BinaryOperator)
         //   for division.
-        return null;
-    }
+
+
 
     /**
      * {@inheritDoc}
@@ -29,4 +37,5 @@ public class DivOperator extends BinaryOperator<Integer> {
         //  the setOperand method to check for division by zero.
         //  See DivOperatorTest (and the README) for usage.
     }
+
 }
