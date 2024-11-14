@@ -18,6 +18,7 @@ public class LinkedStack<T> implements StackInterface<T> {
      */
     @Override
     public T pop() throws StackUnderflowException {
+
         // TODO: Implement the pop method, which will be
         //   similar to a removeFirst method for a LinkedList
         //   (a special case of our remove method).
