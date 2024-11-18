@@ -18,11 +18,8 @@ public class LinkedStack<T> implements StackInterface<T> {
      */
     @Override
     public T pop() throws StackUnderflowException {
-        if (head == null) {
+        if (head == null) throw new StackUnderflowException();
 
-
-            return null;
-        }
         T element = head.getElement();
         head =head.getNext();
         size--;
@@ -44,9 +41,8 @@ public class LinkedStack<T> implements StackInterface<T> {
         //   similar to a getFirst method for a LinkedList
         //   (a special case of our get method).
         //   If the list is empty you should throw an exception.
-        if (head == null) {
-            return null;
-        }
+        if (head == null) throw new StackUnderflowException();
+
         return head.getElement();
     }
 
@@ -59,12 +55,15 @@ public class LinkedStack<T> implements StackInterface<T> {
         //   similar to the addFirst method for a LinkedList.
         //   If elem is null you should throw an exception.
         if (elem == null) {
-            throw new NullPointerException("Element cannot be null");
+            throw new NullPointerException() ;
         }
+
         Node<T> newNode = new Node<>(elem);
         newNode.setNext(head);
         head = newNode;
         size++;
+
+
     }
 
     /**
