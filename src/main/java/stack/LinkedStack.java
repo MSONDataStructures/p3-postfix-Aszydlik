@@ -10,7 +10,7 @@ package stack;
  */
 public class LinkedStack<T> implements StackInterface<T> {
 
-    Node<T> first;
+    Node<T> head;
     int size;
 
     /**
@@ -18,12 +18,21 @@ public class LinkedStack<T> implements StackInterface<T> {
      */
     @Override
     public T pop() throws StackUnderflowException {
+        if (head == null) {
+
+
+            return null;
+        }
+        T element = head.getElement();
+        head =head.getNext();
+        size--;
+        return element;
 
         // TODO: Implement the pop method, which will be
         //   similar to a removeFirst method for a LinkedList
         //   (a special case of our remove method).
         //   If the list is empty you should throw an exception.
-        return null;
+
     }
 
     /**
@@ -35,7 +44,10 @@ public class LinkedStack<T> implements StackInterface<T> {
         //   similar to a getFirst method for a LinkedList
         //   (a special case of our get method).
         //   If the list is empty you should throw an exception.
-        return null;
+        if (head == null) {
+            return null;
+        }
+        return head.getElement();
     }
 
     /**
@@ -46,6 +58,13 @@ public class LinkedStack<T> implements StackInterface<T> {
         // TODO: Implement the push method, which will be
         //   similar to the addFirst method for a LinkedList.
         //   If elem is null you should throw an exception.
+        if (elem == null) {
+            throw new NullPointerException("Element cannot be null");
+        }
+        Node<T> newNode = new Node<>(elem);
+        newNode.setNext(head);
+        head = newNode;
+        size++;
     }
 
     /**

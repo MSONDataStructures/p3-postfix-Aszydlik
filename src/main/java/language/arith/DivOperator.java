@@ -33,18 +33,25 @@ public class DivOperator extends BinaryOperator<Integer> {
      */
     @Override
     public void setOperand(int i, Operand<Integer> operand) {
-        Operand<Integer> op0 = this.getOp0();
+
         Operand<Integer> op1 = this.getOp1();
        if(operand == null) throw new NullPointerException("Operand cannot be null.");
        if(i != 0 && i !=1) throw new IllegalArgumentException("Operand must be 0 or 1.");
        if(i == 0 ){
-           if(op0.getValue() != null ) throw new IllegalArgumentException("Operand cannot be null.");
-           op0 = operand;
-       }
-       if(i == 1 ){
-           if(i == 1 && operand.getValue() == 0) throw new IllegalArgumentException("Operand cannot be zero.");
+           if(op1.getValue() != null ) throw new IllegalArgumentException("Operand cannot be null.");
            op1 = operand;
        }
+       if(i == 1 ){
+           if(operand.getValue() == 0) throw new IllegalArgumentException("Operand cannot be zero.");
+           op1 = operand;
+       }
+
+        /**
+         *Operand<Integer> second = this.getOp1();
+        *if( second.getValue() == 0) throw new IllegalStateException("Could not perform operation prior to operands being set.");
+        *second = operand;
+         */
     }
 
 }
+

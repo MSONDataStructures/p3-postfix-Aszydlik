@@ -14,10 +14,7 @@ public abstract class UnaryOperator<T> implements Operator<T> {
 
     @Override
     public void setOperand(int i, Operand<T> operand) {
-        // TODO: Modify the example from the BinaryOperator
-        //   implementation to implement this UnaryOperator
-        //   abstract class (which will have NegateOperator
-        //   as a subclass).
+
     }
 
     /**
