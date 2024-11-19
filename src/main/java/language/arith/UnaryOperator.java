@@ -6,7 +6,7 @@ import language.Operator;
 public abstract class UnaryOperator<T> implements Operator<T> {
 
     private Operand<T> op0;
-    private Operand<T> op1;
+
 
 
     @Override
@@ -16,7 +16,6 @@ public abstract class UnaryOperator<T> implements Operator<T> {
 
     @Override
     public void setOperand(int i, Operand<T> operand) {
-        //not changed from Binary Operator
         if (operand == null) {
             throw new NullPointerException("Could not set null operand.");
         }
@@ -31,7 +30,13 @@ public abstract class UnaryOperator<T> implements Operator<T> {
             op0 = operand;
         }
 
-
+        if (i != 0) {
+            throw new IllegalArgumentException("Index must be 0 for UnaryOperator");
+        }
+        if (op0 == null) {
+            throw new IllegalArgumentException("Operand cannot be null");
+        }
+        op0 = operand;
     }
 
     /**
