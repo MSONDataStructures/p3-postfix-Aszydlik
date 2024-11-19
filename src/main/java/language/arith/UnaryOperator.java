@@ -29,12 +29,8 @@ public abstract class UnaryOperator<T> implements Operator<T> {
                 throw new IllegalStateException("Position " + i + " has been previously set.");
             }
             op0 = operand;
-        } else {
-            if (op1 != null) {
-                throw new IllegalStateException("Position " + i + " has been previously set.");
-            }
-            op1 = operand;
         }
+
 
     }
 
