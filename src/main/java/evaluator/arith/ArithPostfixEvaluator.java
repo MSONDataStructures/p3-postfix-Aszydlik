@@ -44,6 +44,6 @@ public class ArithPostfixEvaluator implements Evaluator<Integer> {
         }
 
         //TODO What do we return?
-        return null;
+        return stack.pop().getValue();
     }
 }
