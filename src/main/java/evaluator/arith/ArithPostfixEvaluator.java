@@ -3,6 +3,7 @@ package evaluator.arith;
 import evaluator.Evaluator;
 import language.Operand;
 import parser.arith.ArithPostfixParser;
+import stack.LinkedStack;
 import stack.StackInterface;
 
 /**
@@ -18,7 +19,7 @@ public class ArithPostfixEvaluator implements Evaluator<Integer> {
      */
     public ArithPostfixEvaluator() {
         //TODO Initialize to your LinkedStack
-        stack = null;
+        stack = new LinkedStack<>();
     }
 
     /**

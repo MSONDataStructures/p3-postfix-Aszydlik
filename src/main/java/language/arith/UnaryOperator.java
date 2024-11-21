@@ -7,8 +7,6 @@ public abstract class UnaryOperator<T> implements Operator<T> {
 
     private Operand<T> op0;
 
-
-
     @Override
     public int getNumberOfArguments() {
         return 1; // this one is on the house
@@ -16,20 +14,22 @@ public abstract class UnaryOperator<T> implements Operator<T> {
 
     @Override
     public void setOperand(int i, Operand<T> operand) {
-
         if (operand == null) {
             throw new NullPointerException("Could not set null operand.");
         }
+
         if (i != 0) {
             throw new IllegalArgumentException("Unary operator only accepts operand 0 "
                     + "but received " + i + ".");
         }
+
         if (op0 != null) {
             throw new IllegalStateException("Position " + i + " has been previously set.");
         }
         op0 = operand;
-    }
 
+
+    }
 
 
     /**
