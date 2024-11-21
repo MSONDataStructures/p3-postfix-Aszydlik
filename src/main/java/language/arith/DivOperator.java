@@ -39,7 +39,7 @@ public class DivOperator extends BinaryOperator<Integer> {
     public void setOperand(int i, Operand<Integer> operand) {
         Operand<Integer> op1 = this.getOp1();
 
-      if(i == 1 && op1.getValue() == 0) {
+      if(i == 1 && operand.getValue() == 0) {
           throw new ArithmeticException("Division by zero");
       }
 
