@@ -16,28 +16,21 @@ public abstract class UnaryOperator<T> implements Operator<T> {
 
     @Override
     public void setOperand(int i, Operand<T> operand) {
+
         if (operand == null) {
             throw new NullPointerException("Could not set null operand.");
         }
-        if (i > 1 || i < 0) {
-            throw new IllegalArgumentException("Binary operator only accepts operands 0 and 1 "
+        if (i != 0) {
+            throw new IllegalArgumentException("Unary operator only accepts operand 0 "
                     + "but received " + i + ".");
         }
-        if (i == 0) {
-            if (op0 != null) {
-                throw new IllegalStateException("Position " + i + " has been previously set.");
-            }
-            op0 = operand;
-        }
-
-        if (i != 0) {
-            throw new IllegalArgumentException("Index must be 0 for UnaryOperator");
-        }
-        if (op0 == null) {
-            throw new IllegalArgumentException("Operand cannot be null");
+        if (op0 != null) {
+            throw new IllegalStateException("Position " + i + " has been previously set.");
         }
         op0 = operand;
     }
+
+
 
     /**
      * Returns the first operand.
