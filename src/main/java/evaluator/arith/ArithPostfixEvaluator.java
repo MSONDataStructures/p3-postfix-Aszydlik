@@ -2,6 +2,7 @@ package evaluator.arith;
 
 import evaluator.Evaluator;
 import language.Operand;
+import language.Operator;
 import parser.arith.ArithPostfixParser;
 import stack.LinkedStack;
 import stack.StackInterface;
@@ -28,20 +29,27 @@ public class ArithPostfixEvaluator implements Evaluator<Integer> {
      */
     @Override
     public Integer evaluate(String expr) {
-        // TODO Use all the things built so far to create
-        //   the algorithm for postfix evaluation
         ArithPostfixParser parser = new ArithPostfixParser(expr);
         while (parser.hasNext()) {
             switch (parser.nextType()) {
                 case OPERAND:
-                    //TODO What do we do when we see an operand?
+                    Operand<Integer> operand = parser.nextOperand();
+                    stack.push(operand);
                     break;
                 case OPERATOR:
-                    //TODO What do we do when we see an operator?
+                    Operator<Integer> operator = parser.nextOperator();
+                    Operand<Integer> operand2 = stack.pop();
+                    Operand<Integer> operand1 = stack.pop();
+                    Operand<Integer> result = operator.operate(operand1, operand2);
+                    stack.push(result);
                     break;
                 default:
-                    //TODO If we get here, something went very wrong
+                    throw new IllegalStateException("Unexpected token type");
             }
+        }
+
+        if (stack.size() != 1) {
+            throw new IllegalStateException("Invalid expression: too many operands");
         }
 
         //TODO What do we return?

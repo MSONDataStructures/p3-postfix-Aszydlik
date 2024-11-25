@@ -38,4 +38,6 @@ public interface Operator<T> {
      * @throws NullPointerException if the operand provided is null.
      */
     void setOperand(int position, Operand<T> operand);
+
+    Operand<T> operate(Operand<T> operand1, Operand<T> operand2);
 }
