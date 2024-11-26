@@ -39,5 +39,4 @@ public interface Operator<T> {
      */
     void setOperand(int position, Operand<T> operand);
 
-    Operand<T> operate(Operand<T> operand1, Operand<T> operand2);
 }
