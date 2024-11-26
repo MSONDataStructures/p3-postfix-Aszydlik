@@ -40,7 +40,10 @@ public class ArithPostfixEvaluator implements Evaluator<Integer> {
                     Operator<Integer> operator = parser.nextOperator();
                     Operand<Integer> operand2 = stack.pop();
                     Operand<Integer> operand1 = stack.pop();
-                    Operand<Integer> result = operator.preformOperation(operand1, operand2);
+                    operator.setOperand(0, operand1);
+                    operator.setOperand(1, operand2);
+
+                    Operand<Integer> result = operator.performOperation();
                     stack.push(result);
                     break;
                 default:
