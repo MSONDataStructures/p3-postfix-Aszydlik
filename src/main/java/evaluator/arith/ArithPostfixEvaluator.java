@@ -1,6 +1,7 @@
 package evaluator.arith;
 
 import evaluator.Evaluator;
+import evaluator.IllegalPostfixExpressionException;
 import language.Operand;
 import language.Operator;
 import language.arith.UnaryOperator;
@@ -42,14 +43,19 @@ public class ArithPostfixEvaluator implements Evaluator<Integer> {
                     Operator<Integer> operator = parser.nextOperator();
 
                     if (operator instanceof UnaryOperator) {
-                        // Unary operator (e.g., negation)
+
+                        if (stack.isEmpty()) {
+                            throw new IllegalPostfixExpressionException("Not enough operands for unary operator.");
+                        }
                         Operand<Integer> operandToNegate = stack.pop();
                         operator.setOperand(0, operandToNegate);
                         Operand<Integer> result = operator.performOperation();
                         stack.push(result);
                     }
                     else {
-
+                        if (stack.size() < 2) {
+                            throw new IllegalPostfixExpressionException("Not enough operands for binary operator.");
+                        }
                         Operand<Integer> operand2 = stack.pop();
                         Operand<Integer> operand1 = stack.pop();
                         operator.setOperand(0, operand1);
