@@ -73,7 +73,9 @@ public class ArithPostfixEvaluator implements Evaluator<Integer> {
         if (stack.size() != 1) {
             throw new IllegalStateException("Invalid expression: too many operands");
         }
-
+        if (stack.isEmpty()) {
+            throw new IllegalPostfixExpressionException("Invalid expression: not enough operands");
+        }
         //TODO What do we return?
         return stack.pop().getValue();
     }

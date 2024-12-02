@@ -2,7 +2,7 @@ package language.arith;
 
 import language.BinaryOperator;
 import language.Operand;
-
+import language.Operator;
 /**
  * The {@link DivOperator} is an operator that performs integer division on two
  * integers.
