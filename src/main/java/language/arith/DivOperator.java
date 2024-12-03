@@ -38,6 +38,7 @@ public class DivOperator extends BinaryOperator<Integer> {
     @Override
     public void setOperand(int i, Operand<Integer> operand) {
 
+
       if(i == 1 && operand.getValue() == 0) {
           throw new ArithmeticException("Division by zero");
       }
