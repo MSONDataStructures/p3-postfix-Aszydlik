@@ -66,12 +66,12 @@ public class ArithPostfixEvaluator implements Evaluator<Integer> {
                     }
                     break;
                 default:
-                    throw new IllegalStateException("Unexpected token type");
+                    throw new IllegalPostfixExpressionException("Unexpected token type");
             }
         }
 
         if (stack.size() != 1) {
-            throw new IllegalStateException("Invalid expression: too many operands");
+            throw new IllegalPostfixExpressionException("Invalid expression: too many operands");
         }
         if (stack.isEmpty()) {
             throw new IllegalPostfixExpressionException("Invalid expression: not enough operands");

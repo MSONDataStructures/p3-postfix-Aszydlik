@@ -40,7 +40,8 @@ public class DivOperator extends BinaryOperator<Integer> {
 
 
       if(i == 1 && operand.getValue() == 0) {
-          throw new ArithmeticException("Division by zero");
+          throw new IllegalStateException("Division by zero");
+
       }
 
       super.setOperand(i, operand);
